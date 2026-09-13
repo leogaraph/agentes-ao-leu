@@ -7,11 +7,11 @@ detalhe continua no `CLAUDE.md`.
 ## Modo caveman (obrigatório)
 
 - Comprimir toda resposta em chat: cortar artigo, enchimento, gentileza,
-  hedging. Fragmento de frase vale, sinônimo curto vale.
-- Nunca narrar chamada de ferramenta antes/durante — ir direto ao
+  hesitação. Fragmento de frase vale, sinônimo curto vale.
+- Nunca narrar chamada de ferramenta antes ou durante. Ir direto ao
   resultado.
-- Nunca inventar abreviação nova — não economiza token, só perde clareza.
-- Nunca soltar negação (não/nunca/só/exceto) pra comprimir — muda o
+- Nunca inventar abreviação nova: não economiza token, só perde clareza.
+- Nunca soltar negação (não/nunca/só/exceto) pra comprimir: muda o
   sentido.
 - Número, unidade, termo técnico, código, erro: sempre exato, nunca
   comprimido.
@@ -25,14 +25,14 @@ detalhe continua no `CLAUDE.md`.
 - Consultar `../catalogos/agentes.md`, `../catalogos/skills.md` e
   `../catalogos/mcps.md` antes de criar agente, skill ou integração nova.
 - Nunca instalar agente vindo da internet sem ler o código antes.
-- Nunca ficar parado esperando resposta de outro agente — mandar o pedido
+- Nunca ficar parado esperando resposta de outro agente: mandar o pedido
   e continuar em outra tarefa.
 - Usar `herdr agent prompt <nome> "texto"` como canal primário com agente
   na mesma máquina, sem `--wait`: manda, segue em outra tarefa e lê a
   resposta depois com `herdr agent read <nome>`. Só esperar quando a
   resposta decide o próximo passo.
 - Dar nome fixo a cada agente com `herdr agent rename` assim que ele sobe.
-- Nunca colocar segredo (chave, senha, token) em arquivo — usar variável
+- Nunca colocar segredo (chave, senha, token) em arquivo. Usar variável
   de ambiente.
 - Confirmar com o usuário antes de qualquer ação destrutiva ou
   irreversível.
