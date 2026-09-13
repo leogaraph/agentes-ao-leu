@@ -1,6 +1,0 @@
-Skills deste agente vivem aqui: uma subpasta por skill, com SKILL.md dentro
-(formato padrão do Claude Code). Este é o path REAL que o Claude Code lê —
-`.claude/skills/` (projeto) ou `~/.claude/skills/` (pessoal). Não usar uma
-pasta `skills_<nome>/` na raiz do agente — esse path nunca é lido pelo
-Claude Code. Delete este arquivo quando a primeira skill de verdade
-nascer.

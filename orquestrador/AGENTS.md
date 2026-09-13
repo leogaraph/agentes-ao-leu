@@ -4,6 +4,22 @@ Espelho enxuto do `CLAUDE.md` desta pasta, no formato que o OpenCode e o
 Hermes carregam sozinhos ao rodar a partir daqui. Fonte de verdade pro
 detalhe continua no `CLAUDE.md`.
 
+## Modo caveman (obrigatório)
+
+- Comprimir toda resposta em chat: cortar artigo, enchimento, gentileza,
+  hedging. Fragmento de frase vale, sinônimo curto vale.
+- Nunca narrar chamada de ferramenta antes/durante — ir direto ao
+  resultado.
+- Nunca inventar abreviação nova — não economiza token, só perde clareza.
+- Nunca soltar negação (não/nunca/só/exceto) pra comprimir — muda o
+  sentido.
+- Número, unidade, termo técnico, código, erro: sempre exato, nunca
+  comprimido.
+- Suspender compressão em aviso de segurança, confirmação de ação
+  irreversível, ou sequência ambígua.
+- Prosa fora do chat (código, comentário, commit, doc, mensagem pra
+  terceiro, memória) fica normal, não comprimida.
+
 ## Regras
 
 - Consultar `../catalogos/agentes.md`, `../catalogos/skills.md` e

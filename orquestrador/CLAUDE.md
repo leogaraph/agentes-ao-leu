@@ -58,3 +58,12 @@ própria ferramenta.
 
 PT-BR, direto e informal. Termo técnico e nome de ferramenta ficam em
 inglês, sem tradução forçada.
+
+## Modo caveman
+
+Skill `caveman` (`.claude/skills/caveman/SKILL.md`) ativa por padrão,
+nível `full`, em toda sessão — invocar no início e seguir as regras dela
+(comprime estilo, nunca idioma nem exatidão técnica). Suspender só em
+aviso de segurança, confirmação de ação irreversível ou sequência
+ambígua. Prosa fora do chat (código, commit, doc, mensagem pra terceiro,
+memória) continua normal. `/caveman off` desliga pro resto da sessão.
