@@ -93,10 +93,11 @@ Usa outra ferramenta ou tem um caso que o repositório não cobre? [Abra uma iss
 **No primeiro dia**
 - Sem a skill do herdr, o agente usa o canal da própria ferramenta (lista de sessões do Claude Code, `opencode session list`), que só vê a mesma ferramenta, e jura que o time está desligado. Instale a skill em cada máquina e escreva no `CLAUDE.md` e no `AGENTS.md` que o canal é o herdr.
 - `herdr agent prompt ... --wait` trava quem pediu. Mande sem `--wait` e leia depois com `herdr agent read <nome>`.
-- Agente parado pode estar só pedindo permissão (`herdr agent get` mostra `blocked`). Já vimos 45 minutos assim.
-- OpenCode não lê `.mcp.json`: declare o MCP no `opencode.json`.
-- OpenCode: liberar `external_directory` não libera o `read`. Declare os dois (e `glob` e `grep` se o agente procura arquivos).
+- Agente parado pode estar só pedindo permissão, e o herdr às vezes mostra `done` nessa hora. Olhe a tela com `herdr agent read <nome>`. Já vimos 45 minutos assim.
+- Permissão pasta por pasta trava o time toda semana. No OpenCode, libere a leitura de todas as pastas de trabalho de uma vez e negue só os segredos, que ficam no fim da lista porque a última regra que casa é a que vale. Escrita continua restrita. Pronto pra copiar: [`_template_agente/opencode.json`](_template_agente/opencode.json).
+- OpenCode: liberar `external_directory` não libera o `read`. Declare os dois, mais `glob`, `grep` e `list`.
 - OpenCode no Windows escreve o caminho em minúscula. Declare as duas grafias.
+- OpenCode não lê `.mcp.json`: declare o MCP no `opencode.json`.
 - Mudou o `opencode.json`? Reinicie o agente.
 - `opencode serve --hostname 0.0.0.0` sem `OPENCODE_SERVER_PASSWORD` abre um agente com terminal pra rede toda.
 
@@ -107,7 +108,7 @@ Usa outra ferramenta ou tem um caso que o repositório não cobre? [Abra uma iss
 - Modelo gratuito com limite de 50 imagens por pedido quebra a sessão. Leia recortes pequenos; quebrou, `/new`.
 - Depois de reiniciar a máquina, sessão restaurada no OpenCode pode dar erro de `reasoning encrypted_content`: `/new` e reenvie.
 - Guarde o pedido num arquivo (brief). Se a máquina cair, reenvia em uma linha.
-- Imagem e música na GPU ao mesmo tempo estouram a memória. Confira `nvidia-smi` antes e ligue offload.
+- Imagem e música na GPU ao mesmo tempo estouram a memória. Confira `nvidia-smi` antes. Offload pra CPU joga o modelo na RAM (vimos 13 GB), então confira a RAM livre também.
 - O Git Bash transforma `/new` em `C:/Git/new`. Use `MSYS_NO_PATHCONV=1` na frente.
 
 ## Licença
