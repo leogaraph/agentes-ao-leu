@@ -12,8 +12,25 @@ ferramentas de empresas diferentes conversando direto entre si pelo
 ## Pra quem é
 
 - Quem já usa mais de uma ferramenta ou plataforma de IA e cansou de ficar trocando de janela.
-- Quem tem agente de harness diferente (Claude Code, OpenCode, Hermes) e quer que eles trabalhem juntos.
+- Quem tem agente de harness diferente (Claude Code, OpenCode, Hermes, Codex, Pi ou qualquer outro) e quer que eles trabalhem juntos.
 - Quem quer montar um time de agentes com regra clara, sem instalar coisa da internet no escuro.
+
+## Funciona com a sua ferramenta
+
+Aqui a gente roda e testa com **Claude Code, OpenCode e Hermes**, então os exemplos usam
+esses três. Mas nada no esquema depende deles: o herdr reconhece mais de 20 ferramentas de
+agente (Codex, Pi, Cursor, Copilot, Grok e outras), e o que o repositório ensina vale pra
+qualquer uma:
+
+- **Identidade:** a maioria das ferramentas lê `AGENTS.md`. As que não leem costumam ter um
+  arquivo próprio (o Claude Code usa `CLAUDE.md`). Mantenha os dois com o mesmo conteúdo.
+- **Skills:** o formato `SKILL.md` virou padrão aberto e várias ferramentas já leem. Confira
+  na documentação da sua em qual pasta ela procura.
+- **MCP:** o servidor é o mesmo pra todas. Só muda o arquivo onde cada uma declara.
+- **Conversa entre agentes:** se o herdr reconhece a ferramenta, ela entra no time.
+
+Usa outra ferramenta e adaptou? Abra uma issue ou um pull request contando onde ela lê cada
+coisa, que a gente acrescenta nas tabelas.
 
 É o mesmo esquema que eu uso no canal [LeuAoLeo](https://www.youtube.com/@leuaoleo), e o
 repositório cresce junto com ele: cada vídeo que monta uma peça nova do time deixa ela aqui.
@@ -50,6 +67,7 @@ a configuração e como ela escreve a variável de ambiente.
 | Claude Code | `.mcp.json` | Na pasta do agente | `${VAR}` |
 | OpenCode | `opencode.json` (bloco `mcp`) | Na pasta do agente | `{env:VAR}` |
 | Hermes | `config.yaml` (bloco `mcp_servers`) | Global, em `~/.hermes/` | `${VAR}` |
+| Outras (Codex, Pi, Cursor...) | Cada uma tem o seu | Veja "MCP" na documentação dela | Quase sempre dá pra usar variável de ambiente |
 
 - O OpenCode não lê `.mcp.json`: agente que roda nas duas ferramentas declara o servidor nos dois arquivos, com a mesma variável.
 - O Hermes não tem configuração por pasta. Pra separar agentes, filtre as ferramentas de cada servidor com `tools.include`.
@@ -68,6 +86,7 @@ três: uma pasta com um `SKILL.md` e um cabeçalho com `name` (minúsculas e hí
 | Claude Code | `.claude/skills/` | `CLAUDE.md` |
 | OpenCode | `.claude/skills/`, `.opencode/skills/`, `.agents/skills/` | `AGENTS.md` |
 | Hermes | `~/.hermes/skills/` e pastas extras do `config.yaml` | `SOUL.md`, `AGENTS.md`, `CLAUDE.md` |
+| Outras (Codex, Pi, Cursor...) | Muitas leem `.agents/skills/`; confira na documentação | Quase todas leem `AGENTS.md` |
 
 Guardando a skill em `.claude/skills/<nome>/SKILL.md` dentro da pasta do agente, o Claude
 Code e o OpenCode já enxergam. Pro Hermes, aponte essa pasta no `config.yaml` ou copie a
@@ -151,7 +170,8 @@ está do lado.
 ## Como começar: peça pro seu agente
 
 Este repositório é feito pra agente ler. Você não precisa copiar pasta na mão: abra o seu
-Claude Code, OpenCode ou Hermes numa pasta vazia e cole o pedido. Cada bloco abaixo é um
+Claude Code, OpenCode, Hermes, Codex, Pi ou a ferramenta que você usa, numa pasta vazia, e
+cole o pedido. Cada bloco abaixo é um
 pedido pronto.
 
 **1. Montar o time do zero**
