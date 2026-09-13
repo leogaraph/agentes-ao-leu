@@ -1,36 +1,33 @@
 # Agentes ao léu
 
-Claude Code numa janela, OpenCode na outra, um Hermes no servidor. Você pede pra um, copia
-a resposta, cola no outro e confere quem travou. No fim do dia virou o carteiro dos seus
-próprios agentes.
+Cansou de ser o carteiro entre as suas ferramentas de IA, copiando resposta de uma pra
+colar na outra? Aqui os agentes conversam direto entre si, e você só dá a ordem.
 
-Este repositório é o time que eu uso no canal [LeuAoLeo](https://www.youtube.com/@leuaoleo)
-pra sair dessa, e ele cresce a cada vídeo: um orquestrador que recebe o pedido e delega,
-especialistas que fazem o trabalho, e ferramentas diferentes conversando direto entre si
-pelo [herdr](https://herdr.dev).
+É o time que eu uso e mostro funcionando no canal **[LeuAoLeo](https://www.youtube.com/@leuaoleo)**:
+um orquestrador que delega, especialistas que executam, e ferramentas diferentes
+conversando pelo [herdr](https://herdr.dev). O repositório cresce a cada vídeo.
 
-**Pra quem é:** quem já usa mais de uma ferramenta de IA, cansou de trocar de janela e quer
-um time com regra clara, sem instalar coisa da internet no escuro.
+Deixe uma estrela aqui pra acompanhar as novas peças, e [se inscreva no canal](https://www.youtube.com/@leuaoleo?sub_confirmation=1) pra ver cada uma sendo montada.
 
 ## Como começar: peça pro seu agente
 
-Abra a sua ferramenta numa pasta vazia e cole um destes pedidos.
+Abra a sua ferramenta de IA numa pasta vazia e cole um destes pedidos.
 
 **Montar o time**
 ```text
 Clone https://github.com/leogaraph/agentes-ao-leu e leia o README, principalmente "Regras
 do time" e "Pulo do gato". Instale o herdr (https://herdr.dev) e a skill dele pra você
-(npx skills add herdrdev/herdr --skill herdr -g). Copie orquestrador/ pra esta pasta e passe
-a seguir o CLAUDE.md ou AGENTS.md dele. Crie catalogos/ com agentes.md, skills.md e mcps.md
-e se registre. Me mostre a árvore e, em 5 linhas, como vai delegar. Não instale mais nada
-sem perguntar.
+(npx skills add herdrdev/herdr --skill herdr -g). Copie a pasta orquestrador/ da raiz do
+repositório pra esta pasta e siga o CLAUDE.md ou AGENTS.md dela. Crie catalogos/ com
+agentes.md, skills.md e mcps.md e se registre. Me mostre a árvore e, em 5 linhas, como vai
+delegar. Não instale mais nada sem me perguntar.
 ```
 
 **Criar um especialista**
 ```text
-Crie um agente a partir de _template_agente/. Nome: <nome>. Escopo: <faz e não faz>.
-Ferramenta: <qual>. Preencha CLAUDE.md e AGENTS.md iguais, registre no catálogo e me mostre
-antes de ligar.
+Crie um agente a partir de _template_agente/ (na raiz do repositório). Nome: <nome>.
+Escopo: <faz e não faz>. Ferramenta: <qual>. Preencha CLAUDE.md e AGENTS.md iguais,
+registre no catálogo e me mostre antes de ligar.
 ```
 
 **Importar da internet sem instalar cru**
@@ -51,16 +48,20 @@ Na mão: instale o herdr e a skill, copie `orquestrador/` e, pra cada especialis
 `_template_agente/`, troque `{{NOME_AGENTE}}`, `{{ESCOPO}}` e `{{FERRAMENTAS}}` e registre no
 catálogo.
 
+Travou em algum passo ou quer esse time na sua empresa? leogaraph@gmail.com
+
 ## O que tem aqui
 
 | Pasta | Pra quê |
 |---|---|
-| `orquestrador/` | Coordena: recebe o pedido, delega e junta as respostas |
-| `_template_agente/` | Molde de agente novo, com `CLAUDE.md`, `AGENTS.md` e a skill [caveman](https://github.com/JuliusBrussee/caveman) |
+| `orquestrador/` | Recebe o pedido, delega, junta as respostas |
+| `_template_agente/` | Molde de agente novo |
 | `catalogos/` | Agentes, skills e MCPs do time |
-| `mcp/` | O mesmo servidor MCP em cada ferramenta, com exemplos |
-| `skills/` | Como escrever uma skill que todas entendem |
+| `mcp/` | MCP em cada ferramenta, com exemplos |
+| `skills/` | Skill que todas as ferramentas entendem |
 | `VIDEOS.md` | Qual vídeo explica cada parte |
+
+Não sabe o que é MCP? [Tem vídeo de 1 minuto](https://www.youtube.com/watch?v=0Lb6fxu4Vn0).
 
 ## Regras do time
 
@@ -68,50 +69,48 @@ catálogo.
 2. **Catálogo antes de criar.** Se já existe, reaproveita.
 3. **Nunca instala agente cru.** O que vem da internet é estudado e adaptado antes.
 4. **Segredo só em variável de ambiente.**
-5. **Caveman no chat**, pra gastar menos token.
+5. **[Caveman](https://github.com/JuliusBrussee/caveman) no chat**, pra gastar menos token.
 
 ## Funciona com a sua ferramenta
 
 Testado com Claude Code, OpenCode e Hermes. O herdr reconhece mais de 20 ferramentas
 ([lista oficial](https://herdr.dev/docs/agents/)) e roda as outras como terminal comum.
 
-| Ferramenta | Identidade | Skills | MCP |
-|---|---|---|---|
-| Claude Code | `CLAUDE.md` | `.claude/skills/` | `.mcp.json`, `${VAR}` |
-| OpenCode | `AGENTS.md` | `.claude/skills/`, `.opencode/skills/`, `.agents/skills/` | `opencode.json`, `{env:VAR}` |
-| Hermes | `SOUL.md`, `AGENTS.md`, `CLAUDE.md` | `~/.hermes/skills/` ou pasta extra no `config.yaml` | `~/.hermes/config.yaml` (global), `${VAR}` |
-| Outras | Quase todas leem `AGENTS.md` | Muitas leem `.agents/skills/` | Veja a documentação dela |
+| Ferramenta | Identidade | MCP |
+|---|---|---|
+| Claude Code | `CLAUDE.md` | `.mcp.json` |
+| OpenCode | `AGENTS.md` | `opencode.json` |
+| Hermes | `AGENTS.md` | `~/.hermes/config.yaml` |
+| Outras | quase sempre `AGENTS.md` | ver a documentação |
 
-Detalhes em [`mcp/`](mcp/) e [`skills/`](skills/). Usa outra ferramenta? Abra uma issue
-contando onde ela lê cada coisa.
+Skills: guarde em `.claude/skills/<nome>/`. Claude Code e OpenCode leem dali; no Hermes,
+aponte essa pasta no `config.yaml`. Detalhes em [`mcp/`](mcp/) e [`skills/`](skills/).
 
-## Pulo do gato: problemas que já resolvemos
+Usa outra ferramenta ou tem um caso que o repositório não cobre? [Abra uma issue](https://github.com/leogaraph/agentes-ao-leu/issues).
 
-**Comunicação**
-- `herdr agent prompt ... --wait` trava quem pediu. Mande sem `--wait` e leia depois com `herdr agent read <nome>`.
+## Pulo do gato
+
+**No primeiro dia**
 - Sem a skill do herdr, o agente usa o canal da própria ferramenta (lista de sessões do Claude Code, `opencode session list`), que só vê a mesma ferramenta, e jura que o time está desligado. Instale a skill em cada máquina e escreva no `CLAUDE.md` e no `AGENTS.md` que o canal é o herdr.
-- Nome de agente some quando o painel fecha ou ele reinicia: `herdr agent list` e `herdr agent rename`.
+- `herdr agent prompt ... --wait` trava quem pediu. Mande sem `--wait` e leia depois com `herdr agent read <nome>`.
 - Agente parado pode estar só pedindo permissão (`herdr agent get` mostra `blocked`). Já vimos 45 minutos assim.
-- Resposta de outro agente é hipótese. "Risco zero" e "domínio público" já vieram sem conferência.
-
-**OpenCode**
-- Não lê `.mcp.json`: declare o MCP no `opencode.json`.
-- `external_directory` não libera `read`, `glob` nem `grep`. Declare todos.
-- No Windows, escreve o caminho em minúscula. Declare as duas grafias.
+- OpenCode não lê `.mcp.json`: declare o MCP no `opencode.json`.
+- OpenCode: liberar `external_directory` não libera o `read`. Declare os dois (e `glob` e `grep` se o agente procura arquivos).
+- OpenCode no Windows escreve o caminho em minúscula. Declare as duas grafias.
 - Mudou o `opencode.json`? Reinicie o agente.
-- Permissão negada encerra o `opencode run` no meio. Retome com `opencode run -s <sessão>`.
 - `opencode serve --hostname 0.0.0.0` sem `OPENCODE_SERVER_PASSWORD` abre um agente com terminal pra rede toda.
 
-**Modelo, sessão e máquina**
+**Quando aparecer**
+- Nome de agente some quando o painel fecha ou ele reinicia: `herdr agent list` e `herdr agent rename`.
+- Resposta de outro agente é hipótese. "Risco zero" e "domínio público" já vieram sem conferência.
+- Permissão negada encerra o `opencode run` no meio. Retome com `opencode run -s <sessão>`.
 - Modelo gratuito com limite de 50 imagens por pedido quebra a sessão. Leia recortes pequenos; quebrou, `/new`.
-- Sessão restaurada depois de reiniciar a máquina pode dar erro de `reasoning encrypted_content`: `/new` e reenvie.
+- Depois de reiniciar a máquina, sessão restaurada no OpenCode pode dar erro de `reasoning encrypted_content`: `/new` e reenvie.
 - Guarde o pedido num arquivo (brief). Se a máquina cair, reenvia em uma linha.
 - Imagem e música na GPU ao mesmo tempo estouram a memória. Confira `nvidia-smi` antes e ligue offload.
 - O Git Bash transforma `/new` em `C:/Git/new`. Use `MSYS_NO_PATHCONV=1` na frente.
 
-## Licença e contato
+## Licença
 
 MIT, mantendo o `LICENSE`. A skill caveman é de terceiro (Copyright (c) 2026 Julius Brussee,
 MIT), com a licença original em `.claude/skills/caveman/LICENSE`.
-
-Dúvida, ideia ou quer um time desses na sua empresa: leogaraph@gmail.com
