@@ -1,0 +1,14 @@
+# segredo nunca entra no repositório
+.env
+.env.*
+*.key
+*.pem
+tokens.json
+
+# memória local dos agentes é pessoal
+memoria_local/*
+!memoria_local/MEMORY.md
+
+# sistema
+.DS_Store
+Thumbs.db
