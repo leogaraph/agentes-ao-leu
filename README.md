@@ -9,58 +9,8 @@ pra sair dessa, e ele cresce a cada vídeo: um orquestrador que recebe o pedido 
 especialistas que fazem o trabalho, e ferramentas diferentes conversando direto entre si
 pelo [herdr](https://herdr.dev).
 
-**Pra quem é:** quem já usa mais de uma ferramenta de IA (Claude Code, OpenCode, Hermes,
-Codex, Pi ou outra), cansou de trocar de janela e quer um time com regra clara, sem instalar
-coisa da internet no escuro.
-
-## O que tem aqui
-
-| Pasta | Pra quê |
-|---|---|
-| `orquestrador/` | O agente que coordena: recebe o pedido, delega e junta as respostas |
-| `_template_agente/` | Molde de agente novo, com `CLAUDE.md` e `AGENTS.md` |
-| `catalogos/` | Agentes, skills e MCPs do time. O orquestrador consulta antes de criar algo |
-| `mcp/` | O mesmo servidor MCP configurado em cada ferramenta, com exemplos |
-| `skills/` | Como escrever uma skill que todas entendem |
-| `VIDEOS.md` | Qual vídeo explica cada parte |
-
-As pastas entram conforme os vídeos saem.
-
-## Regras do time
-
-1. **Manda e segue.** Ninguém fica parado esperando outro agente. Manda, faz outra coisa, lê a resposta depois.
-2. **Catálogo antes de criar.** Se já existe agente, skill ou MCP que resolve, reaproveita.
-3. **Nunca instala agente cru.** O que vem da internet é estudado e adaptado ao template antes.
-4. **Segredo só em variável de ambiente**, nunca em arquivo.
-5. **Caveman no chat** (ver abaixo).
-
-## Funciona com a sua ferramenta
-
-A gente testa com Claude Code, OpenCode e Hermes, mas o herdr reconhece mais de 20
-ferramentas ([lista oficial](https://herdr.dev/docs/agents/)), e as que não estão na lista
-ainda rodam nele como terminal comum. Se o herdr reconhece, entra no time.
-O que muda de uma pra outra é onde cada uma procura as coisas:
-
-| Ferramenta | Identidade | Skills | MCP |
-|---|---|---|---|
-| Claude Code | `CLAUDE.md` | `.claude/skills/` | `.mcp.json` na pasta, `${VAR}` |
-| OpenCode | `AGENTS.md` | `.claude/skills/`, `.opencode/skills/`, `.agents/skills/` | `opencode.json`, bloco `mcp`, `{env:VAR}` |
-| Hermes | `SOUL.md`, `AGENTS.md`, `CLAUDE.md` | `~/.hermes/skills/` ou pasta extra no `config.yaml` | `~/.hermes/config.yaml`, global, `${VAR}` |
-| Outras | Quase todas leem `AGENTS.md` | Muitas leem `.agents/skills/` | Veja a documentação dela |
-
-Guarde a skill em `.claude/skills/<nome>/SKILL.md` na pasta do agente: Claude Code e
-OpenCode já leem dali; pro Hermes, aponte a pasta no `config.yaml`. Exemplos e detalhes em
-[`mcp/`](mcp/) e [`skills/`](skills/). Usa outra ferramenta? Abra uma issue contando onde
-ela lê cada coisa.
-
-## Caveman: menos token, mesma resposta
-
-Todo agente responde no chat de forma comprimida, com o conteúdo técnico, o idioma e os
-números intactos. Código, commit, documentação e texto pro público ficam normais, e aviso
-de segurança sai sempre por extenso. Agente que só escreve conteúdo (roteiro, post) pode
-ficar de fora. Níveis `lite`, `full` (padrão) e `ultra`; desliga com
-`/caveman off`. A economia varia: o autor fala em ~65% do texto, testes em tarefa de agente
-mediram bem menos. Skill original: [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) (MIT).
+**Pra quem é:** quem já usa mais de uma ferramenta de IA, cansou de trocar de janela e quer
+um time com regra clara, sem instalar coisa da internet no escuro.
 
 ## Como começar: peça pro seu agente
 
@@ -97,15 +47,43 @@ a gente usa, segredo só em variável de ambiente (me diga o nome, eu coloco o v
 registre em catalogos/mcps.md.
 ```
 
-**Ligar o caveman num agente**
-```text
-Copie .claude/skills/caveman/ (com o LICENSE) do _template_agente/ pro agente <nome> e
-acrescente a seção "Modo caveman (obrigatório)" no CLAUDE.md e no AGENTS.md dele.
-```
+Na mão: instale o herdr e a skill, copie `orquestrador/` e, pra cada especialista, copie
+`_template_agente/`, troque `{{NOME_AGENTE}}`, `{{ESCOPO}}` e `{{FERRAMENTAS}}` e registre no
+catálogo.
 
-Na mão: instale o herdr e a skill, copie `orquestrador/`, abra sua ferramenta dentro dela,
-e pra cada especialista copie `_template_agente/`, troque `{{NOME_AGENTE}}`, `{{ESCOPO}}` e
-`{{FERRAMENTAS}}` e registre no catálogo.
+## O que tem aqui
+
+| Pasta | Pra quê |
+|---|---|
+| `orquestrador/` | Coordena: recebe o pedido, delega e junta as respostas |
+| `_template_agente/` | Molde de agente novo, com `CLAUDE.md`, `AGENTS.md` e a skill [caveman](https://github.com/JuliusBrussee/caveman) |
+| `catalogos/` | Agentes, skills e MCPs do time |
+| `mcp/` | O mesmo servidor MCP em cada ferramenta, com exemplos |
+| `skills/` | Como escrever uma skill que todas entendem |
+| `VIDEOS.md` | Qual vídeo explica cada parte |
+
+## Regras do time
+
+1. **Manda e segue.** Ninguém fica parado esperando outro agente.
+2. **Catálogo antes de criar.** Se já existe, reaproveita.
+3. **Nunca instala agente cru.** O que vem da internet é estudado e adaptado antes.
+4. **Segredo só em variável de ambiente.**
+5. **Caveman no chat**, pra gastar menos token.
+
+## Funciona com a sua ferramenta
+
+Testado com Claude Code, OpenCode e Hermes. O herdr reconhece mais de 20 ferramentas
+([lista oficial](https://herdr.dev/docs/agents/)) e roda as outras como terminal comum.
+
+| Ferramenta | Identidade | Skills | MCP |
+|---|---|---|---|
+| Claude Code | `CLAUDE.md` | `.claude/skills/` | `.mcp.json`, `${VAR}` |
+| OpenCode | `AGENTS.md` | `.claude/skills/`, `.opencode/skills/`, `.agents/skills/` | `opencode.json`, `{env:VAR}` |
+| Hermes | `SOUL.md`, `AGENTS.md`, `CLAUDE.md` | `~/.hermes/skills/` ou pasta extra no `config.yaml` | `~/.hermes/config.yaml` (global), `${VAR}` |
+| Outras | Quase todas leem `AGENTS.md` | Muitas leem `.agents/skills/` | Veja a documentação dela |
+
+Detalhes em [`mcp/`](mcp/) e [`skills/`](skills/). Usa outra ferramenta? Abra uma issue
+contando onde ela lê cada coisa.
 
 ## Pulo do gato: problemas que já resolvemos
 
@@ -133,8 +111,7 @@ e pra cada especialista copie `_template_agente/`, troque `{{NOME_AGENTE}}`, `{{
 
 ## Licença e contato
 
-MIT: pode usar, adaptar e usar em projeto comercial, mantendo o `LICENSE`. A skill caveman
-é de terceiro (Copyright (c) 2026 Julius Brussee, MIT), com a licença original em
-`.claude/skills/caveman/LICENSE`.
+MIT, mantendo o `LICENSE`. A skill caveman é de terceiro (Copyright (c) 2026 Julius Brussee,
+MIT), com a licença original em `.claude/skills/caveman/LICENSE`.
 
 Dúvida, ideia ou quer um time desses na sua empresa: leogaraph@gmail.com
