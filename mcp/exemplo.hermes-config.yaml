@@ -1,0 +1,15 @@
+# Trecho do ~/.hermes/config.yaml (o Hermes usa um config global, não por pasta).
+# Segredos ficam em ~/.hermes/.env, nunca aqui.
+
+mcp_servers:
+  arquivos:
+    command: "npx"
+    args: ["-y", "@modelcontextprotocol/server-filesystem", "./docs"]
+
+  github:
+    url: "https://api.githubcopilot.com/mcp/"
+    headers:
+      Authorization: "Bearer ${GITHUB_TOKEN}"
+    tools:
+      # só expõe o que o agente precisa
+      include: [list_issues, create_issue]

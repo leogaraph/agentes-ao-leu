@@ -16,6 +16,8 @@ deixa ela aqui.
 | `orquestrador/` | O agente que coordena o time. Recebe o pedido, manda pro especialista certo e junta as respostas |
 | `_template_agente/` | Molde pra criar agente novo. Tem `CLAUDE.md` (lido pelo Claude Code) e `AGENTS.md` (lido pelo OpenCode e pelo Hermes), porque cada ferramenta lê um arquivo diferente |
 | `catalogos/` | Três listas que o orquestrador consulta antes de criar qualquer coisa: agentes, skills e MCPs |
+| `mcp/` | Como ligar o mesmo servidor MCP no Claude Code, no OpenCode e no Hermes, com um exemplo pronto pra cada um |
+| `skills/` | Como escrever uma skill que as três ferramentas entendem, e onde cada uma procura |
 | `VIDEOS.md` | Qual vídeo do canal explica cada parte |
 
 > As pastas entram conforme os vídeos saem. Se alguma ainda não existe, o vídeo dela está a caminho.
