@@ -28,6 +28,7 @@ deixa ela aqui.
 2. **Consulta o catálogo antes de criar.** Se já existe agente, skill ou MCP que resolve, reaproveita.
 3. **Nunca instala agente cru.** Agente da internet é estudado primeiro: o orquestrador lê, aponta o que briga com as regras do time e adapta pro template.
 4. **Segredo nunca em arquivo.** Chave, token e senha ficam só em variável de ambiente.
+5. **Modo caveman obrigatório no chat.** Todo agente do time responde comprimido (skill `caveman` em `.claude/skills/`, regras espelhadas no `AGENTS.md` pra OpenCode/Hermes) — comprime estilo, nunca idioma nem exatidão técnica. Prosa fora do chat (código, commit, doc) fica normal.
 
 ## Como começar
 
