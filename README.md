@@ -1,12 +1,22 @@
 # Agentes ao léu
 
-Um time de agentes de IA pra você baixar, adaptar e colocar pra trabalhar. É o mesmo
-esquema que eu uso no canal [LeuAoLeo](https://www.youtube.com/@leuaoleo): um agente
-orquestrador que pensa e delega, especialistas que executam, e agentes de harness diferentes (Claude Code, OpenCode, Hermes) conversando entre si pelo
-[herdr](https://herdr.dev).
+Você tem o Claude Code aberto numa janela, o OpenCode na outra, talvez um Hermes rodando
+num servidor. Pede uma coisa pra um, copia a resposta, cola no outro, volta, confere
+quem travou. No fim do dia você virou o carteiro dos seus próprios agentes.
 
-O repositório cresce junto com o canal. Cada vídeo que monta uma peça nova do time
-deixa ela aqui.
+Eu passei por isso. Este repositório é o que eu montei pra sair dessa: um agente
+orquestrador que recebe o pedido e delega, especialistas que fazem o trabalho, e
+ferramentas de empresas diferentes conversando direto entre si pelo
+[herdr](https://herdr.dev), sem você no meio levando recado.
+
+## Pra quem é
+
+- Quem já usa mais de uma ferramenta ou plataforma de IA e cansou de ficar trocando de janela.
+- Quem tem agente de harness diferente (Claude Code, OpenCode, Hermes) e quer que eles trabalhem juntos.
+- Quem quer montar um time de agentes com regra clara, sem instalar coisa da internet no escuro.
+
+É o mesmo esquema que eu uso no canal [LeuAoLeo](https://www.youtube.com/@leuaoleo), e o
+repositório cresce junto com ele: cada vídeo que monta uma peça nova do time deixa ela aqui.
 
 ## O que tem aqui
 
