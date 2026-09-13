@@ -2,8 +2,7 @@
 
 Um time de agentes de IA pra você baixar, adaptar e colocar pra trabalhar. É o mesmo
 esquema que eu uso no canal [LeuAoLeo](https://www.youtube.com/@leuaoleo): um agente
-orquestrador que pensa e delega, especialistas que executam, e agentes de empresas
-diferentes (Claude Code, OpenCode, Hermes) conversando entre si pelo
+orquestrador que pensa e delega, especialistas que executam, e agentes de harness diferentes (Claude Code, OpenCode, Hermes) conversando entre si pelo
 [herdr](https://herdr.dev).
 
 O repositório cresce junto com o canal. Cada vídeo que monta uma peça nova do time
