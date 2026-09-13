@@ -4,10 +4,10 @@ Claude Code numa janela, OpenCode na outra, um Hermes no servidor. Você pede pr
 a resposta, cola no outro e confere quem travou. No fim do dia virou o carteiro dos seus
 próprios agentes.
 
-Este repositório é o que eu montei pra sair dessa: um orquestrador que recebe o pedido e
-delega, especialistas que fazem o trabalho, e ferramentas diferentes conversando direto
-entre si pelo [herdr](https://herdr.dev). É o time que eu uso no canal
-[LeuAoLeo](https://www.youtube.com/@leuaoleo), e ele cresce a cada vídeo.
+Este repositório é o time que eu uso no canal [LeuAoLeo](https://www.youtube.com/@leuaoleo)
+pra sair dessa, e ele cresce a cada vídeo: um orquestrador que recebe o pedido e delega,
+especialistas que fazem o trabalho, e ferramentas diferentes conversando direto entre si
+pelo [herdr](https://herdr.dev).
 
 **Pra quem é:** quem já usa mais de uma ferramenta de IA (Claude Code, OpenCode, Hermes,
 Codex, Pi ou outra), cansou de trocar de janela e quer um time com regra clara, sem instalar
@@ -37,7 +37,8 @@ As pastas entram conforme os vídeos saem.
 ## Funciona com a sua ferramenta
 
 A gente testa com Claude Code, OpenCode e Hermes, mas o herdr reconhece mais de 20
-ferramentas (Codex, Pi, Cursor, Copilot, Grok...). Se o herdr reconhece, entra no time.
+ferramentas ([lista oficial](https://herdr.dev/docs/agents/)), e as que não estão na lista
+ainda rodam nele como terminal comum. Se o herdr reconhece, entra no time.
 O que muda de uma pra outra é onde cada uma procura as coisas:
 
 | Ferramenta | Identidade | Skills | MCP |
