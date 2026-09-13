@@ -79,9 +79,68 @@ Skill original: [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman
 MIT. A cópia deste repositório fica em `.claude/skills/caveman/`, com o aviso de licença do
 autor no arquivo `LICENSE` da própria pasta.
 
+## Pulo do gato: problemas conhecidos e contornados
+
+Tudo aqui aconteceu de verdade rodando o time. Se você cair num desses, o conserto já
+está do lado.
+
+### Comunicação entre agentes
+
+- **Não trave a sessão esperando resposta.** `herdr agent prompt <nome> "texto" --wait`
+  deixa o agente parado até o outro terminar, sem fazer mais nada. Mande sem `--wait`,
+  siga em outra tarefa e leia depois com `herdr agent read <nome>`. Só espere quando a
+  resposta decide o próximo passo.
+- **Instale a skill do herdr em cada ferramenta.** Sem ela, o agente tenta o canal nativo
+  da própria ferramenta: o Claude Code usa a lista de sessões dele, que só enxerga outras
+  sessões Claude Code, e o OpenCode usa `opencode session list`, que só enxerga OpenCode.
+  Resultado: o agente jura que o resto do time está desligado. Instale uma vez em cada
+  máquina com `npx skills add herdrdev/herdr --skill herdr -g` e deixe escrito no
+  `CLAUDE.md` e no `AGENTS.md` que o canal é o herdr.
+- **Nome de agente some.** Se o painel fecha ou o agente reinicia, o nome que você deu
+  vai embora. Redescubra com `herdr agent list` e renomeie com `herdr agent rename`.
+- **Agente "travado" pode estar só pedindo permissão.** `herdr agent get <nome>` mostra
+  `blocked` quando ele está esperando você aprovar alguma coisa. Já vimos agente parado
+  45 minutos assim. Leia a tela com `herdr agent read <nome>` antes de achar que quebrou.
+- **Resposta de outro agente é hipótese, não fato.** Agente escreve "risco zero" ou
+  "domínio público" sem conferir. Antes de repassar pro usuário, confira na fonte.
+
+### OpenCode
+
+- **Não lê `.mcp.json`.** Declare o MCP no `opencode.json`, bloco `mcp`.
+- **Permissão de pasta é separada por ferramenta.** Liberar `external_directory` não
+  libera `read`, `glob` nem `grep`. Declare todas, com os mesmos caminhos.
+- **No Windows, ele escreve o caminho em minúscula** (`e:\projeto` em vez de
+  `E:\Projeto`). Se a regra de permissão não bate, declare as duas grafias.
+- **Mudou o `opencode.json`? Reinicie o agente.** A configuração só é lida na subida.
+- **Negação de permissão encerra o `opencode run`.** Em modo sem tela, se o agente tenta
+  ler algo bloqueado (um `.env`, por exemplo), a execução termina no meio. Retome a mesma
+  sessão com `opencode run -s <id-da-sessao>` dizendo pra ele não ler aquilo.
+- **`opencode serve --hostname 0.0.0.0` abre o agente pra rede inteira.** Sem a variável
+  `OPENCODE_SERVER_PASSWORD`, qualquer aparelho da rede manda comando pra um agente com
+  terminal. Use `127.0.0.1` quando o acesso for só da própria máquina.
+
+### Modelo e sessão
+
+- **Limite de imagens por pedido.** Alguns modelos gratuitos aceitam no máximo 50 imagens
+  por requisição e a sessão quebra quando passa disso. Leia imagem em recorte pequeno e
+  poucas vezes por tarefa. Quebrou? Abra uma sessão nova com `/new`.
+- **Sessão restaurada que não volta.** Depois de reiniciar a máquina, uma sessão antiga
+  pode falhar com erro de `reasoning encrypted_content`. Abra uma sessão nova com `/new`
+  e reenvie a tarefa.
+- **Escreva o pedido num arquivo.** Se a máquina desliga, a tarefa em andamento se perde,
+  mas um arquivo de instruções (brief) no disco deixa você reenviar em uma linha.
+- **Duas tarefas pesadas de GPU ao mesmo tempo estouram a memória.** Geração de imagem e
+  de música juntas derrubaram tudo aqui. Peça pro agente conferir `nvidia-smi` antes de
+  usar a placa, e ligue o modo de economia de memória (offload) no gerador.
+
+### Terminal no Windows
+
+- **O Git Bash transforma `/new` em caminho** (vira `C:/Git/new`). Ao mandar comando com
+  barra pro agente via terminal, use `MSYS_NO_PATHCONV=1` na frente.
+
 ## Como começar
 
-1. Instale o herdr: <https://herdr.dev>
+1. Instale o herdr: <https://herdr.dev>. Depois instale a skill dele em cada ferramenta: `npx skills add herdrdev/herdr --skill herdr -g`.
 2. Copie a pasta `orquestrador/` pra onde você quer que o time more.
 3. Abra o Claude Code dentro dela e peça pra ele se apresentar.
 4. Pra criar um especialista, copie `_template_agente/`, troque os marcadores `{{NOME_AGENTE}}`, `{{ESCOPO}}` e `{{FERRAMENTAS}}` e registre no catálogo.
