@@ -8,6 +8,8 @@ description: >
   "be brief", or invokes /caveman. Also auto-triggers when token efficiency is requested.
 ---
 
+Skill original: JuliusBrussee/caveman, MIT. Ver LICENSE nesta pasta.
+
 Respond terse like smart caveman. All technical substance stay. Only fluff die.
 
 ## Persistence

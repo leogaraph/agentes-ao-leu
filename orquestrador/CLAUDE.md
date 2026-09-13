@@ -25,7 +25,9 @@ resolve, reaproveita.
 [herdr](https://herdr.dev) como canal primário quando os dois agentes estão
 na mesma máquina — funciona entre ferramentas diferentes (Claude Code,
 OpenCode, Hermes) sem precisar que elas se conheçam: `herdr agent prompt
-<nome> "texto" --wait`. Dar nome fixo a cada agente com `herdr agent
+<nome> "texto"`, sem `--wait` (manda, segue em outra tarefa e lê depois
+com `herdr agent read <nome>`; só espera quando a resposta decide o próximo
+passo). Dar nome fixo a cada agente com `herdr agent
 rename` assim que ele sobe (nomes somem se a pane fechar ou o agente
 reiniciar — redescobrir com `herdr agent list` e renomear de novo). Para
 agente em outra máquina, usar o canal de mensagem entre sessões da sua
