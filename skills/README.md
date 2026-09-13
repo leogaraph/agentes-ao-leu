@@ -40,7 +40,7 @@ agente decide carregar a skill.
 2. Pro Hermes, que não procura na pasta do projeto, aponte essa pasta no `config.yaml`
    como diretório extra de skills (a opção se chama `external_dirs` nos guias; confira o
    nome na documentação da sua versão), ou copie a skill pra `~/.hermes/skills/`.
-3. Registre a skill em `catalogos/catalogo_skills.md`, com dono e pra quê serve.
+3. Registre a skill em `catalogos/skills.md`, com dono e pra quê serve.
 
 ## Arquivo de identidade de cada ferramenta
 

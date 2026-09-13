@@ -29,7 +29,7 @@ remoto, pra você comparar lado a lado:
 4. **No OpenCode, permissão de pasta é separada por ferramenta.** Liberar
    `external_directory` não libera o `read`. Se o agente precisa ler fora da própria
    pasta, declare os dois (o exemplo mostra como).
-5. **Registre no catálogo.** Todo MCP novo entra em `catalogos/catalogo_mcp.md`, com o
+5. **Registre no catálogo.** Todo MCP novo entra em `catalogos/mcps.md`, com o
    nome da variável de ambiente que ele usa (nunca o valor).
 
 ## Fontes

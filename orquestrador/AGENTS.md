@@ -27,8 +27,10 @@ detalhe continua no `CLAUDE.md`.
 - Nunca instalar agente vindo da internet sem ler o código antes.
 - Nunca ficar parado esperando resposta de outro agente — mandar o pedido
   e continuar em outra tarefa.
-- Usar `herdr agent prompt <nome> "texto" --wait` como canal primário com
-  agente na mesma máquina.
+- Usar `herdr agent prompt <nome> "texto"` como canal primário com agente
+  na mesma máquina, sem `--wait`: manda, segue em outra tarefa e lê a
+  resposta depois com `herdr agent read <nome>`. Só esperar quando a
+  resposta decide o próximo passo.
 - Dar nome fixo a cada agente com `herdr agent rename` assim que ele sobe.
 - Nunca colocar segredo (chave, senha, token) em arquivo — usar variável
   de ambiente.
