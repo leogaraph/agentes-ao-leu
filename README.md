@@ -36,6 +36,11 @@ deixa ela aqui.
 
 O passo a passo completo, com os erros que aconteceram no caminho, está nos vídeos (ver `VIDEOS.md`).
 
+## Licença
+
+MIT. Pode usar, copiar, adaptar e usar em projeto comercial. Só mantenha o aviso de
+licença junto (arquivo `LICENSE`).
+
 ## Contato
 
 Dúvida, ideia ou quer um time desses na sua empresa: leogaraph@gmail.com
