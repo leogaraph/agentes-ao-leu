@@ -138,7 +138,65 @@ está do lado.
 - **O Git Bash transforma `/new` em caminho** (vira `C:/Git/new`). Ao mandar comando com
   barra pro agente via terminal, use `MSYS_NO_PATHCONV=1` na frente.
 
-## Como começar
+## Como começar: peça pro seu agente
+
+Este repositório é feito pra agente ler. Você não precisa copiar pasta na mão: abra o seu
+Claude Code, OpenCode ou Hermes numa pasta vazia e cole o pedido. Cada bloco abaixo é um
+pedido pronto.
+
+**1. Montar o time do zero**
+
+```text
+Clone https://github.com/leogaraph/agentes-ao-leu e leia o README inteiro, principalmente
+"Regras do time" e "Pulo do gato". Depois:
+1. Instale o herdr (https://herdr.dev) se ainda não estiver instalado e instale a skill
+   dele pra você: npx skills add herdrdev/herdr --skill herdr -g
+2. Copie orquestrador/ pra esta pasta. A partir de agora você é o orquestrador: siga o
+   CLAUDE.md ou o AGENTS.md dele, o que a sua ferramenta ler.
+3. Crie a pasta catalogos/ com agentes.md, skills.md e mcps.md e registre você como
+   primeiro agente.
+4. Me mostre a árvore de pastas e me diga, em 5 linhas, como você vai delegar.
+Não instale nada além disso sem me perguntar.
+```
+
+**2. Criar um especialista**
+
+```text
+Crie um agente novo a partir de _template_agente/. Nome: <nome>. Escopo: <o que ele faz e o
+que não faz>. Ferramenta: <Claude Code, OpenCode ou Hermes>. Preencha CLAUDE.md e AGENTS.md
+com o mesmo conteúdo essencial, registre em catalogos/agentes.md e me mostre o que ficou
+antes de ligar ele.
+```
+
+**3. Importar um agente ou skill da internet sem instalar cru**
+
+```text
+Estude este repositório: <link>. Não instale nada. Me responda em 5 linhas: o que ele faz,
+o que aproveita pro nosso time, o que briga com as nossas regras (segredo, espera, escopo),
+se vira agente, skill ou MCP no catálogo, e o que você mudaria. Só depois do meu ok, adapte
+pro _template_agente/, registre no catálogo e me mostre a diferença pro original.
+```
+
+**4. Ligar um MCP nas três ferramentas**
+
+```text
+Quero o MCP <nome> disponível pro time. Leia mcp/README.md e declare o servidor no formato
+de cada ferramenta que a gente usa, com o segredo só em variável de ambiente (me diga o
+nome da variável, eu mesmo coloco o valor). Registre em catalogos/mcps.md.
+```
+
+**5. Ligar o modo caveman num agente que ainda não tem**
+
+```text
+Copie .claude/skills/caveman/ do _template_agente/ pra pasta do agente <nome>, junto com o
+LICENSE, e acrescente a seção "Modo caveman (obrigatório)" no CLAUDE.md e no AGENTS.md dele,
+igual ao template.
+```
+
+Se o agente tentar falar com os outros por outro caminho que não o herdr, ou disser que o
+resto do time está desligado, veja o "Pulo do gato".
+
+### Se preferir fazer na mão
 
 1. Instale o herdr: <https://herdr.dev>. Depois instale a skill dele em cada ferramenta: `npx skills add herdrdev/herdr --skill herdr -g`.
 2. Copie a pasta `orquestrador/` pra onde você quer que o time more.
