@@ -61,7 +61,7 @@ Travou em algum passo ou quer esse time na sua empresa? leogaraph@gmail.com
 | `skills/` | Skill que todas as ferramentas entendem |
 | `VIDEOS.md` | Qual vídeo explica cada parte |
 
-Não sabe o que é MCP? [Tem vídeo de 1 minuto](https://www.youtube.com/watch?v=0Lb6fxu4Vn0).
+Não sabe o que é MCP? [Tem vídeo de 20 segundos](https://www.youtube.com/watch?v=0Lb6fxu4Vn0).
 
 ## Regras do time
 
