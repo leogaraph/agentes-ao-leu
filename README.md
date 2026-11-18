@@ -1,47 +1,110 @@
 # Agentes ao léu
 
-Cansou de ser o carteiro entre as suas ferramentas de IA, copiando resposta de uma pra
-colar na outra? Aqui os agentes conversam direto entre si, e você só dá a ordem.
+Um time de agentes de IA pronto pra baixar e adaptar: um orquestrador que delega, especialistas
+que executam e ferramentas diferentes conversando pelo [herdr](https://herdr.dev).
 
-É o time que eu uso e mostro funcionando no canal **[LeuAoLeo](https://www.youtube.com/@leuaoleo)**:
-um orquestrador que delega, especialistas que executam, e ferramentas diferentes
-conversando pelo [herdr](https://herdr.dev). O repositório cresce a cada vídeo.
+É o time que eu uso e mostro funcionando no canal **[LeuAoLeo](https://www.youtube.com/@leuaoleo)**.
+O repositório cresce a cada vídeo. Deixe uma estrela aqui pra acompanhar as novas peças, e
+[se inscreva no canal](https://www.youtube.com/@leuaoleo?sub_confirmation=1) pra ver cada uma sendo montada.
 
-Deixe uma estrela aqui pra acompanhar as novas peças, e [se inscreva no canal](https://www.youtube.com/@leuaoleo?sub_confirmation=1) pra ver cada uma sendo montada.
+## O que é um template
 
-## Do zero: nada instalado ainda
+Um agente de IA é uma ferramenta (Claude Code, OpenCode, Hermes) rodando numa pasta, com um
+arquivo de instruções que diz quem ele é e o que pode fazer. Montar esse arquivo do zero a
+cada agente dá trabalho e sai diferente toda vez.
 
-Sem Node.js nem agente na máquina? Dois passos no terminal. O Windows usa o PowerShell, o
-Mac e o Linux usam o Terminal.
+O **template** (`_template_agente/`) é o molde: uma pasta pronta, com as instruções já
+escritas e lacunas marcadas, como `{{NOME_AGENTE}}` e `{{ESCOPO}}`. Você copia a pasta, preenche
+as lacunas e tem um agente novo, já com as mesmas regras do resto do time.
 
-**1. Instalar o Node.js** (site oficial: https://nodejs.org/en/download)
+| Peça | O que é |
+|---|---|
+| **Orquestrador** | O agente que recebe o seu pedido, escolhe quem faz e junta as respostas |
+| **Especialista** | Agente com um escopo só (ex.: editar vídeo, cuidar de um servidor), criado a partir do template |
+| **Template** | O molde pra criar um especialista novo |
+| **Catálogo** | Lista do que o time já tem (agentes, skills, MCPs), pra não criar duas vezes |
+| **Skill** | Instrução reutilizável que o agente carrega quando precisa |
+| **MCP** | Conexão do agente com uma ferramenta externa. [Vídeo de 20 segundos](https://www.youtube.com/watch?v=0Lb6fxu4Vn0) |
+| **herdr** | O terminal onde os agentes ficam abertos e se mandam mensagem |
 
-```text
-Windows:  winget install OpenJS.NodeJS.LTS
-Mac:      brew install node
-Linux:    pelo gerenciador da sua distro (ex.: sudo apt install nodejs npm) ou pelo site acima
+## Requisitos (Windows)
+
+| Precisa de | Pra quê | Como conferir |
+|---|---|---|
+| Windows 10 ou 11 | Sistema | |
+| PowerShell | Terminal (já vem no Windows) | Menu Iniciar, digite `PowerShell` |
+| winget | Instala programas pelo terminal (já vem no Windows 11 e no 10 atualizado) | `winget --version` |
+| Node.js (LTS) | Roda o OpenCode e o `npx` | `node -v` |
+| npm | Vem junto com o Node.js | `npm -v` |
+| OpenCode CLI | O agente que vai usar este repositório | `opencode --version` |
+| Git | Baixar este repositório | `git --version` |
+| Conta de um provedor de modelo | O OpenCode precisa de um modelo pra responder | Você conecta dentro do OpenCode |
+
+## Instalar no Windows
+
+Abra o **PowerShell** e rode um passo por vez.
+
+**1. Node.js**
+
+```powershell
+winget install OpenJS.NodeJS.LTS
 ```
 
-Feche e abra o terminal de novo e confira:
+**2. Git**
 
-```text
+```powershell
+winget install Git.Git
+```
+
+**3. Feche o PowerShell e abra de novo.** Sem isso o terminal não enxerga o que acabou de ser
+instalado. Confira:
+
+```powershell
 node -v
 npm -v
+git --version
 ```
 
-Os dois precisam mostrar um número de versão.
+Os três precisam mostrar um número de versão.
 
-**2. Instalar o OpenCode (CLI)**
+**4. OpenCode CLI**
 
-```text
+```powershell
 npm install -g @opencode/cli
 ```
 
-Confira com `opencode --version`. Depois entre numa pasta vazia e rode `opencode`: é o
-agente que vai receber os pedidos da próxima seção.
+Confira:
 
-Deu "permission denied" no Mac ou no Linux? Não use `sudo` com o npm. Instale o Node pelo
-`brew` ou configure a pasta global do npm no seu usuário.
+```powershell
+opencode --version
+```
+
+**5. Primeiro uso.** Crie uma pasta, entre nela e abra o OpenCode:
+
+```powershell
+mkdir meu-time
+cd meu-time
+opencode
+```
+
+Dentro do OpenCode, digite `/connect` e escolha o provedor do seu modelo. Depois siga pra
+[Como começar](#como-começar-peça-pro-seu-agente).
+
+Prefere baixar o Node.js pelo site? https://nodejs.org/en/download (escolha o instalador LTS pro Windows).
+
+## Se der erro (Windows)
+
+| O que aparece | O que fazer |
+|---|---|
+| `winget` não é reconhecido | Abra a Microsoft Store, atualize o "Instalador de Aplicativo" e abra o PowerShell de novo. Ou baixe o Node.js pelo site |
+| `node` ou `npm` não é reconhecido logo depois de instalar | Feche o PowerShell e abra de novo. Persistindo, reinicie o Windows |
+| `npm : ... a execução de scripts foi desabilitada neste sistema` | Rode `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, responda `S`, e tente de novo. Ou use `npm.cmd` no lugar de `npm` |
+| `opencode` não é reconhecido depois do `npm install -g` | A pasta global do npm não está no PATH. Veja o caminho com `npm prefix -g` (normalmente `C:\Users\<você>\AppData\Roaming\npm`), adicione em Variáveis de Ambiente, Path, e abra o PowerShell de novo |
+| `EACCES` ou `permission denied` no `npm install -g` | Não rode como administrador por reflexo. Confira se o `npm prefix -g` aponta pra uma pasta sua (`AppData\Roaming\npm`) |
+| `/new` vira `C:/Git/new` no Git Bash | Use o PowerShell, ou `MSYS_NO_PATHCONV=1` na frente do comando |
+| O OpenCode abre e não responde | Falta conectar um modelo. Digite `/connect` |
+
+Não resolveu? leogaraph@gmail.com
 
 ## Como começar: peça pro seu agente
 
@@ -94,8 +157,6 @@ Travou em algum passo ou quer esse time na sua empresa? leogaraph@gmail.com
 | `mcp/` | MCP em cada ferramenta, com exemplos |
 | `skills/` | Skill que todas as ferramentas entendem |
 | `VIDEOS.md` | Qual vídeo explica cada parte |
-
-Não sabe o que é MCP? [Tem vídeo de 20 segundos](https://www.youtube.com/watch?v=0Lb6fxu4Vn0).
 
 ## Regras do time
 
