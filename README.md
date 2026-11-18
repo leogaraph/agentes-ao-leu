@@ -98,7 +98,7 @@ Prefere baixar o Node.js pelo site? https://nodejs.org/en/download (escolha o in
 |---|---|
 | `winget` não é reconhecido | Abra a Microsoft Store, atualize o "Instalador de Aplicativo" e abra o PowerShell de novo. Ou baixe o Node.js pelo site |
 | `node` ou `npm` não é reconhecido logo depois de instalar | Feche o PowerShell e abra de novo. Persistindo, reinicie o Windows |
-| `npm : ... a execução de scripts foi desabilitada neste sistema` | Rode `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, responda `S`, e tente de novo. Ou use `npm.cmd` no lugar de `npm` |
+| `npm : ... a execução de scripts foi desabilitada neste sistema` | Rode `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, responda `S` (ou `Y`, se o Windows estiver em inglês), e tente de novo. Ou use `npm.cmd` no lugar de `npm` |
 | `opencode` não é reconhecido depois do `npm install -g` | A pasta global do npm não está no PATH. Veja o caminho com `npm prefix -g` (normalmente `C:\Users\<você>\AppData\Roaming\npm`), adicione em Variáveis de Ambiente, Path, e abra o PowerShell de novo |
 | `EACCES` ou `permission denied` no `npm install -g` | Não rode como administrador por reflexo. Confira se o `npm prefix -g` aponta pra uma pasta sua (`AppData\Roaming\npm`) |
 | `/new` vira `C:/Git/new` no Git Bash | Use o PowerShell, ou `MSYS_NO_PATHCONV=1` na frente do comando |
