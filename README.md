@@ -9,6 +9,40 @@ conversando pelo [herdr](https://herdr.dev). O repositório cresce a cada vídeo
 
 Deixe uma estrela aqui pra acompanhar as novas peças, e [se inscreva no canal](https://www.youtube.com/@leuaoleo?sub_confirmation=1) pra ver cada uma sendo montada.
 
+## Do zero: nada instalado ainda
+
+Sem Node.js nem agente na máquina? Dois passos no terminal. O Windows usa o PowerShell, o
+Mac e o Linux usam o Terminal.
+
+**1. Instalar o Node.js** (site oficial: https://nodejs.org/en/download)
+
+```text
+Windows:  winget install OpenJS.NodeJS.LTS
+Mac:      brew install node
+Linux:    pelo gerenciador da sua distro (ex.: sudo apt install nodejs npm) ou pelo site acima
+```
+
+Feche e abra o terminal de novo e confira:
+
+```text
+node -v
+npm -v
+```
+
+Os dois precisam mostrar um número de versão.
+
+**2. Instalar o OpenCode (CLI)**
+
+```text
+npm install -g @opencode/cli
+```
+
+Confira com `opencode --version`. Depois entre numa pasta vazia e rode `opencode`: é o
+agente que vai receber os pedidos da próxima seção.
+
+Deu "permission denied" no Mac ou no Linux? Não use `sudo` com o npm. Instale o Node pelo
+`brew` ou configure a pasta global do npm no seu usuário.
+
 ## Como começar: peça pro seu agente
 
 Abra a sua ferramenta de IA numa pasta vazia e cole um destes pedidos.
