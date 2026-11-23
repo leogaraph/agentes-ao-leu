@@ -159,6 +159,7 @@ Travou em algum passo ou quer esse time na sua empresa? leogaraph@gmail.com
 | `coordenacao/` | Ordem com arquivo, registro de decisão, lock de recurso pesado, ronda noturna |
 | `9router/` | Um endereço pra todos os modelos, combos e benchmark dos gratuitos |
 | `VIDEOS.md` | Qual vídeo explica cada parte |
+| `NOVIDADES.md` | O que mudou em cada versão |
 
 ## Regras do time
 
@@ -209,6 +210,35 @@ Usa outra ferramenta ou tem um caso que o repositório não cobre? [Abra uma iss
 - Guarde o pedido num arquivo (brief). Se a máquina cair, reenvia em uma linha.
 - Imagem e música na GPU ao mesmo tempo estouram a memória. Confira `nvidia-smi` antes. Offload pra CPU joga o modelo na RAM (vimos 13 GB), então confira a RAM livre também.
 - O Git Bash transforma `/new` em `C:/Git/new`. Use `MSYS_NO_PATHCONV=1` na frente.
+
+## Atualizar pra versão nova
+
+O repositório muda a cada vídeo. O seu time é uma **cópia** das pastas daqui, já preenchida e
+mexida por você, então atualizar não é sobrescrever: é trazer só o que é novo.
+
+O que mudou em cada versão fica em [`NOVIDADES.md`](NOVIDADES.md).
+
+**Peça pro seu agente**
+```text
+Atualize meu time pra versão nova de https://github.com/leogaraph/agentes-ao-leu. Se já
+existe um clone, rode git pull; senão, clone numa pasta à parte. Leia NOVIDADES.md e me diga
+o que mudou desde a versão que eu uso. Depois compare orquestrador/ e _template_agente/ do
+repositório com as minhas cópias e me mostre, arquivo por arquivo, o que é novo. Não
+sobrescreva nada: o que eu preenchi (nomes, escopos, catálogos, memória, ordens) fica como
+está. Pastas inteiras novas (ex.: coordenacao/, 9router/) você só copia depois do meu ok.
+Não mexa em chave, senha nem variável de ambiente.
+```
+
+**Na mão**
+1. Na pasta do clone: `git pull` (ou baixe o ZIP de novo numa pasta separada).
+2. Leia `NOVIDADES.md`.
+3. Compare com as suas cópias. No Windows: `fc orquestrador\CLAUDE.md <seu-time>\orquestrador\CLAUDE.md`.
+4. Copie só os trechos novos pro seu `CLAUDE.md`/`AGENTS.md`. Não troque o arquivo inteiro: o
+   seu tem as suas regras.
+5. Reinicie os agentes que tiveram o arquivo de instruções mudado.
+
+Não sabe que versão usa? Compare com o histórico de commits do GitHub, ou siga o passo a
+passo do agente: ele descobre pela diferença.
 
 ## Licença
 
