@@ -1,0 +1,14 @@
+kc/nvidia/nemotron-3.5-super-vl:free
+kgw/nvidia/nemotron-3-ultra-550b-a55b:free
+kgw/kilo-auto/free
+oc/big-pickle
+oc/iceman-free
+oc/beam-free
+oc/flint-40b-free
+oc/nemotron-3.5-lightning-free
+oc/hy4-flash-free
+oc/tidepool-alpha-free
+oc/qwen4-max-free
+oc/mimo-v2.6-flash-free
+oc/deepseek-v4.1-flash-free
+oc/nemotron-3.5-super-vl-free

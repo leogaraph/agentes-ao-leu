@@ -1,0 +1,14 @@
+{
+ "prompt": "Leia os arquivos plano_a.txt e plano_b.txt na pasta atual. Qual plano é mais barato por mês, e por quanto (em reais por mês)? Responda no chat em uma frase com o nome do plano e o valor mensal; não crie arquivos. Não precisa instalar nada.",
+ "arquivos": {
+  "plano_a.txt": "Plano A (Nuvem Azul): R$ 348,00 cobrados uma vez por ano, para 12 meses de uso. Inclui 200 GB.\n",
+  "plano_b.txt": "Plano B (Nuvem Verde): R$ 32,00 por mês, sem fidelidade. Inclui 200 GB.\n"
+ },
+ "check": {
+  "tipo": "regex_all",
+  "padroes": [
+   "(?i)plano\\s*A|Azul",
+   "29(,00)?"
+  ]
+ }
+}

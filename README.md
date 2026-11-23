@@ -156,6 +156,8 @@ Travou em algum passo ou quer esse time na sua empresa? leogaraph@gmail.com
 | `catalogos/` | Agentes, skills e MCPs do time |
 | `mcp/` | MCP em cada ferramenta, com exemplos |
 | `skills/` | Skill que todas as ferramentas entendem |
+| `coordenacao/` | Ordem com arquivo, registro de decisão, lock de recurso pesado, ronda noturna |
+| `9router/` | Um endereço pra todos os modelos, combos e benchmark dos gratuitos |
 | `VIDEOS.md` | Qual vídeo explica cada parte |
 
 ## Regras do time
@@ -164,7 +166,9 @@ Travou em algum passo ou quer esse time na sua empresa? leogaraph@gmail.com
 2. **Catálogo antes de criar.** Se já existe, reaproveita.
 3. **Nunca instala agente cru.** O que vem da internet é estudado e adaptado antes.
 4. **Segredo só em variável de ambiente.**
-5. **[Caveman](https://github.com/JuliusBrussee/caveman) no chat**, pra gastar menos token.
+5. **Ordem só vale com arquivo.** Detalhe em [`coordenacao/`](coordenacao/).
+6. **Um pesado por vez.** Lock de recurso pesado, também em `coordenacao/`.
+7. **[Caveman](https://github.com/JuliusBrussee/caveman) no chat**, pra gastar menos token.
 
 ## Funciona com a sua ferramenta
 

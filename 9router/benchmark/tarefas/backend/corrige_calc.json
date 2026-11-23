@@ -1,0 +1,10 @@
+{
+ "prompt": "O arquivo calc.py na pasta atual tem bugs: avalia(expr) deve respeitar a precedência (multiplicação e divisão antes de soma e subtração) e dividir por zero deve levantar ZeroDivisionError. Corrija calc.py editando-o, mantendo a assinatura avalia(expr: str) -> float. Não precisa instalar nada.",
+ "arquivos": {
+  "calc.py": "def avalia(expr):\n    # avalia expressoes simples com + - * / e inteiros, separadas por espaco\n    t = expr.split()\n    r = float(t[0])\n    i = 1\n    while i < len(t):\n        op, n = t[i], float(t[i+1])\n        if op == '+': r += n\n        elif op == '-': r -= n\n        elif op == '*': r *= n\n        elif op == '/': r = r / n if n else 0\n        i += 2\n    return r\n"
+ },
+ "check": {
+  "tipo": "python_assert",
+  "teste": "from calc import avalia\nassert avalia('2 + 3 * 4')==14\nassert avalia('10 - 6 / 2')==7\nassert avalia('2 * 3 + 4 * 5')==26\nassert avalia('8 / 2 / 2')==2\nassert avalia('5')==5\ntry:\n    avalia('1 / 0')\n    raise SystemExit('sem erro')\nexcept ZeroDivisionError:\n    pass\n"
+ }
+}

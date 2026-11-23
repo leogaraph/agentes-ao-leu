@@ -1,0 +1,16 @@
+{
+ "prompt": "Da frase a seguir extraia os campos e responda SOMENTE com um objeto JSON com as chaves \"projeto\" (string), \"horas\" (número) e \"data\" (formato AAAA-MM-DD), sem texto extra e sem markdown. Frase: \"Ontem, 14 de março de 2025, a Marta gastou 6,5 horas no projeto Aurora.\" Não crie arquivos. Não precisa instalar nada.",
+ "check": {
+  "tipo": "json_keys",
+  "chaves": [
+   "projeto",
+   "horas",
+   "data"
+  ],
+  "valores": {
+   "projeto": "Aurora",
+   "horas": 6.5,
+   "data": "2025-03-14"
+  }
+ }
+}

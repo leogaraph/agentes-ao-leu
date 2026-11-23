@@ -12,3 +12,8 @@ memoria_local/*
 # sistema
 .DS_Store
 Thumbs.db
+
+# benchmark
+9router/benchmark/resultados.csv
+9router/benchmark/work/
+9router/benchmark/run.log

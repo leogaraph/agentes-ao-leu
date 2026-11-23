@@ -1,0 +1,7 @@
+{
+ "prompt": "Crie o arquivo soma.py na pasta atual com a função soma_pares(lista) que recebe uma lista de inteiros e retorna a soma apenas dos números pares (lista vazia retorna 0). Só crie o arquivo. Não precisa instalar nada.",
+ "check": {
+  "tipo": "python_assert",
+  "teste": "from soma import soma_pares\nassert soma_pares([1,2,3,4])==6\nassert soma_pares([])==0\nassert soma_pares([1,3,5])==0\nassert soma_pares([-2,-4,7])==-6\nassert soma_pares([0])==0\n"
+ }
+}

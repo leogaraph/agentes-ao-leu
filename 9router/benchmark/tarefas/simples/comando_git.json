@@ -1,0 +1,20 @@
+{
+ "prompt": "Responda com EXATAMENTE uma linha: o comando git que cria a branch feature/login a partir da branch atual e já muda para ela. Sem explicação, sem crase, sem markdown. Não crie arquivos. Não precisa instalar nada.",
+ "check": [
+  {
+   "tipo": "regex_all",
+   "padroes": [
+    "(?m)^\\s*git (checkout -b|switch -c) feature/login\\s*$"
+   ]
+  },
+  {
+   "tipo": "regex_none",
+   "padroes": [
+    "```",
+    "`",
+    "(?i)explic",
+    "\\S\\s*\\n\\s*\\S"
+   ]
+  }
+ ]
+}

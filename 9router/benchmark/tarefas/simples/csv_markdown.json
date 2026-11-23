@@ -1,0 +1,23 @@
+{
+ "prompt": "Leia dados.csv na pasta atual e responda SOMENTE com a tabela em markdown (linha de cabeçalho, linha separadora com ---, e as linhas de dados), sem texto antes ou depois e sem blocos de código. Não crie arquivos. Não precisa instalar nada.",
+ "arquivos": {
+  "dados.csv": "nome,cidade,idade\nAna,Recife,31\nBruno,Natal,28\nCarla,Belem,45\nDiego,Manaus,39\nElisa,Santos,22\n"
+ },
+ "check": [
+  {
+   "tipo": "regex_all",
+   "padroes": [
+    "(?m)^\\|\\s*nome\\s*\\|\\s*cidade\\s*\\|\\s*idade\\s*\\|\\s*$",
+    "(?m)^\\|\\s*-{3,}.*\\|\\s*$",
+    "(?m)^\\|\\s*Diego\\s*\\|\\s*Manaus\\s*\\|\\s*39\\s*\\|\\s*$",
+    "(?m)^\\|\\s*Elisa\\s*\\|\\s*Santos\\s*\\|\\s*22\\s*\\|\\s*$"
+   ]
+  },
+  {
+   "tipo": "regex_none",
+   "padroes": [
+    "```"
+   ]
+  }
+ ]
+}

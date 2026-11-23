@@ -1,0 +1,14 @@
+{
+ "prompt": "Leia artigo.txt na pasta atual e responda em exatamente 3 bullets (linhas começando com '- ') resumindo o servidor, de modo que os bullets contenham: o número de núcleos, a RAM total e a disponibilidade medida. Responda no chat; não crie arquivos. Não precisa instalar nada.",
+ "arquivos": {
+  "artigo.txt": "Servidor Atlas-7: relatório de operação\nO servidor Atlas-7 foi instalado no datacenter de Campinas em março de 2024.\nEle foi projetado para hospedar serviços internos de uma rede de farmácias.\nA equipe de infraestrutura é pequena e trabalha em regime de plantão.\nO equipamento possui 96 núcleos de processamento distribuídos em dois sockets.\nHá também uma reserva de memória que facilita o crescimento futuro.\nA memória RAM total instalada é de 768 GB, em módulos de 64 GB.\nO armazenamento principal usa discos NVMe em arranjo redundante.\nA capacidade bruta do armazenamento chega a 38 TB.\nA manutenção preventiva ocorre aos domingos, sem janela fixa de horário.\nDurante os testes de aceitação, o sistema ficou ligado por vários dias seguidos.\nOs engenheiros relataram poucos incidentes menores nesse período.\nO consumo médio de energia medido foi de 1450 watts sob carga normal.\nO custo de refrigeração é considerado alto pela diretoria financeira.\nUm relatório trimestral compara o Atlas-7 com o servidor anterior, o Boreas-3.\nO Boreas-3 era mais lento, mas consumia menos energia.\nA disponibilidade medida no primeiro ano foi de 99,95 por cento.\nEsse número superou a meta contratada com os clientes internos.\nA rede do equipamento usa placas duplas de alta velocidade.\nO tempo médio de resposta das consultas caiu depois da migração.\nA latência média das consultas ficou em 12 milissegundos.\nHá planos de expansão para o próximo ano fiscal.\nNenhum fornecedor foi escolhido ainda para a expansão.\nO responsável técnico é o engenheiro Moraes.\nO arquivamento dos logs é feito em outro sistema.\nFim do relatório."
+ },
+ "check": {
+  "tipo": "regex_all",
+  "padroes": [
+   "\\b96\\b",
+   "768\\s*GB",
+   "99[,.]95"
+  ]
+ }
+}

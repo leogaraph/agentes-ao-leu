@@ -1,0 +1,7 @@
+{
+ "prompt": "Crie o arquivo fila.py na pasta atual com a classe Fila (FIFO) com métodos push(x), pop() e tamanho(). pop() em fila vazia deve levantar IndexError. Só crie o arquivo. Não precisa instalar nada.",
+ "check": {
+  "tipo": "python_assert",
+  "teste": "from fila import Fila\nf=Fila()\nassert f.tamanho()==0\nf.push(1);f.push(2);f.push(3)\nassert f.tamanho()==3\nassert f.pop()==1\nassert f.pop()==2\nassert f.tamanho()==1\nassert f.pop()==3\ntry:\n    f.pop()\n    raise SystemExit('nao levantou')\nexcept IndexError:\n    pass\n"
+ }
+}

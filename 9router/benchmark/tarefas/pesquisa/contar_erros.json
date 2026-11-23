@@ -1,0 +1,13 @@
+{
+ "prompt": "Leia app.log na pasta atual. Quantas linhas contêm a palavra ERROR e qual o horário (HH:MM:SS) da primeira linha com ERROR? Responda no chat; não crie arquivos. Não precisa instalar nada.",
+ "arquivos": {
+  "app.log": "08:01:12 INFO inicio do servico\n08:03:40 INFO conexao aberta\n08:07:55 WARN latencia alta\n08:12:09 ERROR falha ao gravar no disco\n08:15:30 INFO retry ok\n08:20:01 INFO conexao aberta\n08:25:44 ERROR timeout no banco\n08:31:02 WARN fila cheia\n08:40:18 INFO fila normalizada\n08:44:50 ERROR timeout no banco\n08:50:00 INFO conexao aberta\n08:55:21 INFO checkpoint\n09:02:11 WARN uso de memoria alto\n09:10:37 ERROR processo reiniciado\n09:15:00 INFO fim do ciclo\n"
+ },
+ "check": {
+  "tipo": "regex_all",
+  "padroes": [
+   "\\b4\\b",
+   "08:12:09"
+  ]
+ }
+}
